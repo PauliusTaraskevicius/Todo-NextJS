@@ -16,7 +16,7 @@ model User {
   email    String   @unique
   name     String?
   role     Role     @default(USER)
-  posts    Post[]
+  task     Task[]
   profile  Profile?
   password String
 }
@@ -28,10 +28,11 @@ model Profile {
   userId Int    @unique
 }
 
-model Post {
+model Task {
   id         Int        @id @default(autoincrement())
   createdAt  DateTime   @default(now())
   title      String
+  note       String     @db.Text
   published  Boolean    @default(false)
   author     User       @relation(fields: [authorId], references: [id])
   authorId   Int
@@ -42,7 +43,7 @@ model Post {
 model Category {
   id    Int    @id @default(autoincrement())
   name  String
-  posts Post[] 
+  posts Task[] 
 }
 
 enum Role {
