@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 const THIRTY_DAYS = 30 * 24 * 60 * 60;
 const THIRTY_MINUTES = 30 * 60;
 
-export default NextAuth({
+export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -36,4 +36,6 @@ export default NextAuth({
   },
 
   debug: true,
-});
+};
+
+export default NextAuth(authOptions);

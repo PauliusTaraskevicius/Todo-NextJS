@@ -20,6 +20,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   task          Task[]
+  role          Role      @default(USER)
 }
 
 model Task {
@@ -28,11 +29,9 @@ model Task {
   text          String   @db.Text
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  userId        String
-  user          User     @relation(fields: [userId], references: [id])
-  category      Category[]
+  authorId      String
+  author        User     @relation(fields: [authorId], references: [id])
 }
-
 
 model Account {
   id                 String  @id @default(cuid())
@@ -70,11 +69,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  posts Task[] 
-}
+
 
 enum Role {
   USER
