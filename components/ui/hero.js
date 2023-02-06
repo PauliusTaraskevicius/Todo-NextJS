@@ -1,4 +1,5 @@
 import { useSession, signIn } from "next-auth/react";
+import Footer from "./footer";
 
 function Hero({ credentials }) {
   const { data: session, status } = useSession();
@@ -36,7 +37,9 @@ function Hero({ credentials }) {
         ) : (
           ""
         )}
+        
       </div>
+      <Footer />
     </div>
   );
 }

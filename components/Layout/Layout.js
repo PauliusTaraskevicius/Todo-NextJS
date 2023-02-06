@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import Navbar from "../ui/navbar";
+import Footer from "../ui/footer";
 
 function Layout(props) {
   const { children } = props;
@@ -9,6 +10,7 @@ function Layout(props) {
     <Fragment>
       <Navbar />
       <main>{children}</main>
+
     </Fragment>
   );
 }

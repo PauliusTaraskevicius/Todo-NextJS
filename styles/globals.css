@@ -2,12 +2,20 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import url("https://fonts.googleapis.com/css2?family=Solitreo&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Solitreo&display=swap');
+
 html {
-    max-height: 100vh;
+  max-height: 100vh;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+  /* font-family: "Solitreo", cursive; */
 }
