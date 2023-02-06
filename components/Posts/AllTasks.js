@@ -25,14 +25,14 @@ function TasksList({ feed }) {
 
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-10">
         <CreateTaskForm />
       </div>
       <title>Tasks</title>
       {feed.length > 0 ? (
         feed.map((item, index) => (
           <div className="mb-5" key={index}>
-            <h1>{item.title}</h1>
+            <h1 className="font-bold uppercase">{item.title}</h1>
             <p>{item.text}</p>
             <p>{item.author.name}</p>
             <div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import prisma from "../prisma/prisma";
@@ -12,17 +12,21 @@ export default function Home({ providers, feed }) {
   const { data: session, status } = useSession();
 
   return (
-    <div className="flex justify-center text-center items-center min-h-screen">
-      <Login credentials={providers} />
-      {status === "authenticated" ? (
-        <div>
-          <title>Tasks</title>
-          <TasksList feed={feed} />
+    <Fragment>
+      <div>
+        <div className="flex justify-center text-center items-center min-h-screen">
+          <Login credentials={providers} />
         </div>
-      ) : (
-        ""
-      )}
-    </div>
+        {status === "authenticated" ? (
+          <div className="flex justify-center text-center items-center h-screen">
+            <title>{session.user.name} tasks</title>
+            <TasksList feed={feed} />
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    </Fragment>
   );
 }
 

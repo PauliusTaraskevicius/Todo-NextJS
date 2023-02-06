@@ -1,6 +1,6 @@
 import prisma from "../../../prisma/prisma";
 
-export default async function handle(req, res) {
+export default async function handler(req, res) {
   const { title, text } = req.body;
   const result = await prisma.task.update({
     where: {
