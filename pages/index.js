@@ -3,8 +3,8 @@ import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import prisma from "../prisma/prisma";
 
-import Login from "../components/Login/login";
 import TasksList from "../components/Posts/AllTasks";
+import Hero from "../components/ui/hero";
 
 export default function Home({ providers, feed }) {
   const [loading, setLoading] = useState(false);
@@ -14,11 +14,16 @@ export default function Home({ providers, feed }) {
   return (
     <Fragment>
       <div>
-        <div className="flex justify-center text-center items-center min-h-screen">
-          <Login credentials={providers} />
-        </div>
+        {status === "unauthenticated" ? (
+          <div className="flex justify-center items-center h-screen bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900">
+            <Hero credentials={providers} />
+          </div>
+        ) : (
+          ""
+        )}
+
         {status === "authenticated" ? (
-          <div className="flex justify-center text-center items-center h-screen">
+          <div className="flex justify-center items-center h-screen">
             <title>{session.user.name} tasks</title>
             <TasksList feed={feed} />
           </div>
