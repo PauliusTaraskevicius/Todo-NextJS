@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import CreateTaskForm from "./CreatePost";
 
 function TasksList({ feed }) {
   const [loading, setLoading] = useState(false);
@@ -25,25 +24,24 @@ function TasksList({ feed }) {
 
   return (
     <div>
-      <div className="mb-10">
-        <CreateTaskForm />
-      </div>
-      <title>Tasks</title>
       {feed.length > 0 ? (
         feed.map((item, index) => (
-          <div className="mb-5" key={index}>
-            <h1 className="font-bold uppercase">{item.title}</h1>
-            <p>{item.text}</p>
-            <p>{item.author.name}</p>
-            <div>
-              <button onClick={() => deleteTask(item.id)}>
-                {loading ? "Loading..." : "Delete"}
-              </button>
-            </div>
+          <div class="flex mb-12 items-center" key={index}>
+            <p class="w-full mx-4 md:mx-0 text-grey-darkest">{item.title}</p>
+            <p class="w-full text-grey-darkest">{item.text}</p>
+            <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">
+              Done
+            </button>
+            <button
+              class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
+              onClick={() => deleteTask(item.id)}
+            >
+              {loading ? "Loading..." : "Remove"}
+            </button>
           </div>
         ))
       ) : (
-        <div>
+        <div className="text-center">
           <p>No posts found.</p>
         </div>
       )}

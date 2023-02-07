@@ -5,10 +5,9 @@ import prisma from "../prisma/prisma";
 
 import TasksList from "../components/Posts/AllTasks";
 import Hero from "../components/ui/hero";
+import CreateTaskForm from "../components/Posts/CreatePost";
 
 export default function Home({ providers, feed }) {
-  const [loading, setLoading] = useState(false);
-
   const { data: session, status } = useSession();
 
   return (
@@ -23,9 +22,9 @@ export default function Home({ providers, feed }) {
         )}
 
         {status === "authenticated" ? (
-          <div className="flex justify-center items-center h-screen">
+          <div className="">
             <title>{session.user.name} tasks</title>
-            <TasksList feed={feed} />
+            <CreateTaskForm feed={feed} />
           </div>
         ) : (
           ""
@@ -36,8 +35,17 @@ export default function Home({ providers, feed }) {
 }
 
 export async function getStaticProps(context) {
-  const feed = await prisma.task.findMany({
+  const data = await prisma.task.findMany({
     include: { author: true },
+  });
+  const feed = data.sort(function (a, b) {
+    if (a.createdAt > b.createdAt) {
+      return -1;
+    }
+    if (a.createdAt < b.createdAt) {
+      return 1;
+    }
+    return 0;
   });
   const providers = await getProviders(context);
   return {
