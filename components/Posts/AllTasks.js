@@ -27,8 +27,7 @@ function TasksList({ feed }) {
       {feed.length > 0 ? (
         feed.map((item, index) => (
           <div class="flex mb-12 items-center" key={index}>
-            <p class="w-full mx-4 md:mx-0 text-grey-darkest">{item.title}</p>
-            <p class="w-full text-grey-darkest">{item.text}</p>
+            <p class="w-full text-grey-darkest break-all">{item.text}</p>
             <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">
               Done
             </button>

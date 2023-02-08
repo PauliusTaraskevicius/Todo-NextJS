@@ -20,11 +20,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { title, text } = req.body;
+  const { text } = req.body;
 
   const result = await prisma.task.create({
     data: {
-      title: title,
       text: text,
       authorId: prismaUser.id,
     },

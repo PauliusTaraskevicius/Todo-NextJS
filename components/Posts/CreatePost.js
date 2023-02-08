@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import TasksList from "./AllTasks";
 
 function CreateTaskForm({ feed }) {
-  const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -15,16 +14,15 @@ function CreateTaskForm({ feed }) {
     e.preventDefault();
     setError("");
     setMessage("");
-    if (title && text) {
+    if (text) {
       // send request to the server.
       try {
-        const body = { title, text };
+        const body = { text };
         await fetch(`/api/post`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         });
-        setTitle("");
         setText("");
         await router.push("/");
       } catch (error) {
@@ -56,18 +54,6 @@ function CreateTaskForm({ feed }) {
             {message ? <div>{message}</div> : null}
             <div className="mb-4">
               <h1 className="text-grey-darkest text-center">Todo List</h1>
-              <div className="flex mt-4">
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
-                  type="text"
-                  name="Title"
-                  id="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Title"
-                  maxlength="15"
-                />
-              </div>
               <div className="flex mt-4">
                 <textarea
                   className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
