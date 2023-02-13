@@ -26,6 +26,7 @@ model User {
 model Task {
   id            Int      @id @default(autoincrement())
   text          String   @db.Text
+  completed     Boolean  @db.Boolean @default(false)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   authorId      String
