@@ -1,9 +1,8 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import prisma from "../prisma/prisma";
 
-import TasksList from "../components/Posts/AllTasks";
 import Hero from "../components/ui/hero";
 import CreateTaskForm from "../components/Posts/CreatePost";
 

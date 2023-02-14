@@ -16,7 +16,7 @@ function CompletionBtn({ id, completion }) {
           body: JSON.stringify(body),
         });
 
-        await router.push("/");
+        await router.push('/');
       } catch (error) {
         console.error(error);
       }
@@ -26,10 +26,11 @@ function CompletionBtn({ id, completion }) {
     }
   }
 
-  async function todoUnfinished(taskId) {
+  async function todoUnfinished(taskId, ) {
     if (!completed) {
       // send request to the server.
       try {
+
         const body = { completed };
         await fetch("/api/post/editFalse?id=" + taskId, {
           method: "PUT",
@@ -37,7 +38,7 @@ function CompletionBtn({ id, completion }) {
           body: JSON.stringify(body),
         });
 
-        await router.push("/");
+        await router.push('/');
       } catch (error) {
         console.error(error);
       }
@@ -51,14 +52,25 @@ function CompletionBtn({ id, completion }) {
     <button
       className={
         completion
-          ? "bg-green-600 flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
-          : "bg-red-600 flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
+          ? "bg-green-600 flex-no-shrink p-2 ml-4 mr-2 border-2 rounded-lg hover:text-white"
+          : "bg-red-600 flex-no-shrink p-2 ml-4 mr-2 border-2  rounded-lg hover:text-white"
       }
-      onClick={() =>
-        completion ? todoUnfinished(id) : todoDone(id)
-      }
+      onClick={() => (completion ? todoUnfinished(id) : todoDone(id))}
     >
-      {completion ? "Done" : "Finish"}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.5 12.75l6 6 9-13.5"
+        />
+      </svg>
     </button>
   );
 }

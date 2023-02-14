@@ -1,5 +1,8 @@
 import { Fragment, useState } from "react";
 import { useRouter } from "next/router";
+
+import { motion } from "framer-motion";
+
 import TasksList from "./AllTasks";
 
 function CreateTaskForm({ feed }) {
@@ -10,13 +13,18 @@ function CreateTaskForm({ feed }) {
 
   const router = useRouter();
 
+  const variants = {
+    open: { opacity: 1 },
+    closed: { opacity: 0 },
+  };
+
   async function handleSubmit(e) {
-    e.preventDefault();
     setError("");
     setMessage("");
     if (text) {
       // send request to the server.
       try {
+        e.preventDefault();
         const body = { text };
         await fetch(`/api/post`, {
           method: "POST",
@@ -41,17 +49,22 @@ function CreateTaskForm({ feed }) {
           {open ? "Close" : "Open Todo's"}
         </button>
       </div>
+
       <div
         className={`mobile-menu ${
           open
-            ? "h-100 w-full flex items-center justify-center bg-teal-lightest font-sans"
+            ? "w-full flex items-center justify-center bg-teal-lightest"
             : "hidden"
         }`}
       >
         <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
           <form onSubmit={handleSubmit}>
-            {error ? <div className="text-center mb-2 text-red-600">{error}</div> : null}
-            {message ? <div>{message}</div> : null}
+            {error ? (
+              <div className="text-center mb-2 text-red-600">{error}</div>
+            ) : null}
+            {message ? (
+              <div className="text-center mb-2 text-green-600">{message}</div>
+            ) : null}
             <div className="mb-4">
               <h1 className="text-grey-darkest text-center">Todo List</h1>
               <div className="flex mt-4">
@@ -62,21 +75,22 @@ function CreateTaskForm({ feed }) {
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Content"
-                  maxLength="90"
+                  maxLength="78"
                 />
               </div>
               <div className="flex justify-center items-center">
-              <button
-                className=" flex-no-shrink px-8 py-2 border-2 rounded text-teal border-teal mt-2 hover:text-white hover:bg-black"
-                type="submit"
-              >
-                Add
-              </button>
+                <button
+                  className=" flex-no-shrink px-8 py-2 border-2 rounded text-teal border-teal mt-2 hover:text-white hover:bg-green-600"
+                  type="submit"
+                >
+                  Add
+                </button>
               </div>
             </div>
           </form>
-          
-          <TasksList feed={feed} />
+          <motion.nav animate={open ? "open" : "closed"} variants={variants}>
+            <TasksList feed={feed} />
+          </motion.nav>
         </div>
       </div>
     </Fragment>
