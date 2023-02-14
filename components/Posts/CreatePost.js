@@ -29,7 +29,7 @@ function CreateTaskForm({ feed }) {
         console.error(error);
       }
     } else {
-      setError("All fields are required");
+      setError("Content box cannot be empty!");
       return;
     }
   }
@@ -50,7 +50,7 @@ function CreateTaskForm({ feed }) {
       >
         <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
           <form onSubmit={handleSubmit}>
-            {error ? <div>{error}</div> : null}
+            {error ? <div className="text-center mb-2 text-red-600">{error}</div> : null}
             {message ? <div>{message}</div> : null}
             <div className="mb-4">
               <h1 className="text-grey-darkest text-center">Todo List</h1>
