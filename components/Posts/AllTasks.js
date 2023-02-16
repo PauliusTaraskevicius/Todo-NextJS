@@ -6,22 +6,27 @@ function TasksList({ feed }) {
     <div>
       {feed.length > 0 ? (
         feed.map((item, index) => (
-          <div className="flex mb-12 items-center" key={index}>
+          <div
+            className="flex mb-12 items-center border-b border-gray-200"
+            key={index}
+          >
             <p
               className={
                 item.completed
                   ? "w-full text-grey-darkest break-all line-through"
-                  : "w-full text-grey-darkest break-all"
+                  : "w-full text-grey-darkest break-all "
               }
             >
               {item.text}
             </p>
-            <CompletionBtn completion={item.completed} id={item.id} />
-            <DeleteBtn id={item.id} />
+            <div className="flex mb-2">
+              <CompletionBtn completion={item.completed} id={item.id} />
+              <DeleteBtn id={item.id} />
+            </div>
           </div>
         ))
       ) : (
-        <div classNameName="text-center">
+        <div>
           <p>No posts found.</p>
         </div>
       )}

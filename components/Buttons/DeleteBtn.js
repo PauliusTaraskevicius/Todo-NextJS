@@ -23,7 +23,7 @@ function DeleteBtn({ id }) {
 
   return (
     <button
-      className="flex-no-shrink p-2 ml-2 border-2 rounded-lg  hover:text-black"
+      className="flex-no-shrink p-2 ml-2 border-2 rounded-lg   hover:text-red-600 hover:border-red-600"
       onClick={() => deleteTask(id)}
     >
       {loading ? (

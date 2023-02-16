@@ -3,10 +3,11 @@
 @import "tailwindcss/utilities";
 
 @import url("https://fonts.googleapis.com/css2?family=Solitreo&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Solitreo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Solitreo&display=swap");
 
 html {
-  max-height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 * {
@@ -16,6 +17,6 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   /* font-family: "Solitreo", cursive; */
 }

@@ -44,8 +44,11 @@ function CreateTaskForm({ feed }) {
 
   return (
     <Fragment>
-      <div className="flex items-center justify-center mt-40">
-        <button onClick={() => setOpen(!open)}>
+      <div className=" flex items-center justify-center">
+        <button
+          className="flex-no-shrink px-8 py-2 mt-2 border border-white text-white font-medium rounded-xl hover:border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+          onClick={() => setOpen(!open)}
+        >
           {open ? "Close" : "Open Todo's"}
         </button>
       </div>
@@ -53,7 +56,7 @@ function CreateTaskForm({ feed }) {
       <div
         className={`mobile-menu ${
           open
-            ? "w-full flex items-center justify-center bg-teal-lightest"
+            ? "w-full flex items-center justify-center "
             : "hidden"
         }`}
       >
@@ -80,7 +83,7 @@ function CreateTaskForm({ feed }) {
               </div>
               <div className="flex justify-center items-center">
                 <button
-                  className=" flex-no-shrink px-8 py-2 border-2 rounded text-teal border-teal mt-2 hover:text-white hover:bg-green-600"
+                  className="flex-no-shrink px-8 py-2 mt-2 border border-blue-600 text-blue-600 font-medium rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300"
                   type="submit"
                 >
                   Add

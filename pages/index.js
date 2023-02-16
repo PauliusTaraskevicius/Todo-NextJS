@@ -4,7 +4,8 @@ import { useSession } from "next-auth/react";
 import prisma from "../prisma/prisma";
 
 import Hero from "../components/ui/hero";
-import CreateTaskForm from "../components/Posts/CreatePost";
+import Navbar from "../components/ui/navbar";
+import Description from "../components/ui/description";
 
 export default function Home({ providers, feed }) {
   const { data: session, status } = useSession();
@@ -13,7 +14,7 @@ export default function Home({ providers, feed }) {
     <Fragment>
       <div>
         {status === "unauthenticated" ? (
-          <div className="flex justify-center items-center h-screen bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900">
+          <div className="flex justify-center items-center h-screen">
             <Hero credentials={providers} />
           </div>
         ) : (
@@ -21,9 +22,10 @@ export default function Home({ providers, feed }) {
         )}
 
         {status === "authenticated" ? (
-          <div className="">
+          <div>
+            <Navbar />
             <title>{session.user.name} tasks</title>
-            <CreateTaskForm feed={feed} />
+            <Description feed={feed} />
           </div>
         ) : (
           ""
