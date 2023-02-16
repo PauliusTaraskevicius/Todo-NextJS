@@ -9,7 +9,7 @@ const THIRTY_DAYS = 30 * 24 * 60 * 60;
 const THIRTY_MINUTES = 30 * 60;
 
 export const authOptions = {
-  // adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma),
   site: process.env.NEXTAUTH_URL,
   providers: [
     GoogleProvider({
