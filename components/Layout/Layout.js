@@ -1,14 +1,12 @@
-import { Fragment } from "react";
-
-import Navbar from "../ui/navbar";
+import React from "react";
 
 function Layout(props) {
   const { children } = props;
 
   return (
-    <Fragment>
+    <React.Fragment>
       <main>{children}</main>
-    </Fragment>
+    </React.Fragment>
   );
 }
 

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React from "react";
 import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { db } from "../prisma/prisma";
@@ -11,7 +11,7 @@ export default function Home({ providers, feed }) {
   const { data: session, status } = useSession();
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div>
         {status === "unauthenticated" ? (
           <div className="flex justify-center items-center h-screen">
@@ -31,7 +31,7 @@ export default function Home({ providers, feed }) {
           ""
         )}
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 }
 

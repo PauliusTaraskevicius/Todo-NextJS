@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 import { motion } from "framer-motion";
@@ -43,7 +44,7 @@ function CreateTaskForm({ feed }) {
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div className=" flex items-center justify-center">
         <button
           className="flex-no-shrink px-8 py-2 mt-2 border border-white text-white font-medium rounded-xl hover:border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
@@ -94,7 +95,7 @@ function CreateTaskForm({ feed }) {
           </motion.nav>
         </div>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
