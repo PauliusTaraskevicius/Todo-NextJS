@@ -28,7 +28,7 @@ function Navbar() {
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6" 
+                        class="w-6 h-6"
                       >
                         <path
                           stroke-linecap="round"
@@ -48,7 +48,6 @@ function Navbar() {
                     Signed in as {session.user.name}
                   </button>
                   <button
-                    href=""
                     className="py-5 px-3 text-white"
                     onClick={() => signOut()}
                   >
@@ -81,13 +80,12 @@ function Navbar() {
 
             {/* <!-- mobile menu --> */}
             <div className={`mobile-menu ${open ? "" : "hidden md:hidden "}`}>
-              <a
-                href=""
+              <button
                 className="block py-2 px-4 text-sm hover:bg-gray-200 text-center text-white"
                 onClick={() => signOut()}
               >
                 Logout
-              </a>
+              </button>
             </div>
           </nav>
         </div>

@@ -1,5 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import Footer from "./footer";
+import Navbar from "./navbar";
+import Description from "./description";
 
 function Hero({ credentials }) {
   const { data: session, status } = useSession();
@@ -35,9 +37,12 @@ function Hero({ credentials }) {
             ))}
           </div>
         ) : (
-          ""
+          <div>
+            <Navbar />
+            <title>{session.user.name} tasks</title>
+            <Description feed={feed} />
+          </div>
         )}
-        
       </div>
       <Footer />
     </div>
