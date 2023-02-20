@@ -36,9 +36,12 @@ export default function Home({ providers, feed }) {
 }
 
 export async function getStaticProps(context) {
+  const providers = await getProviders(context);
+
   const data = await db.task.findMany({
     include: { author: true },
   });
+
   const feed = data.sort(function (a, b) {
     if (a.createdAt > b.createdAt) {
       return -1;
@@ -48,9 +51,9 @@ export async function getStaticProps(context) {
     }
     return 0;
   });
-  const providers = await getProviders(context);
+  
   return {
-    props: { feed: JSON.parse(JSON.stringify(feed)), providers },
+    props: { providers, feed: JSON.parse(JSON.stringify(feed)) },
     revalidate: 10,
   };
 }
