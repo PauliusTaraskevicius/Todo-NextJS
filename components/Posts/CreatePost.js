@@ -19,12 +19,12 @@ function CreateTaskForm({ feed }) {
   };
 
   async function handleSubmit(e) {
+    e.preventDefault();
     setError("");
     setMessage("");
     if (text) {
       // send request to the server.
       try {
-        e.preventDefault();
         const body = { text };
         await fetch(`/api/post`, {
           method: "POST",
@@ -55,9 +55,7 @@ function CreateTaskForm({ feed }) {
 
       <div
         className={`mobile-menu ${
-          open
-            ? "w-full flex items-center justify-center "
-            : "hidden"
+          open ? "w-full flex items-center justify-center " : "hidden"
         }`}
       >
         <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">

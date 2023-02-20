@@ -10,7 +10,6 @@ const THIRTY_MINUTES = 30 * 60;
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
-  site: process.env.NEXTAUTH_URL,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -24,6 +23,7 @@ export const authOptions = {
       },
     }),
   ],
+  site: process.env.NEXTAUTH_URL,
 
   session: {
     jwt: true,

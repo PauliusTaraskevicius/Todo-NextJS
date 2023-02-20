@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import prisma from "../prisma/prisma";
+import { db } from "../prisma/prisma";
 
 import Hero from "../components/ui/hero";
 import Navbar from "../components/ui/navbar";
@@ -36,7 +36,7 @@ export default function Home({ providers, feed }) {
 }
 
 export async function getStaticProps(context) {
-  const data = await prisma.task.findMany({
+  const data = await db.task.findMany({
     include: { author: true },
   });
   const feed = data.sort(function (a, b) {

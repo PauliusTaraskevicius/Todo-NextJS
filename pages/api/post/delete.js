@@ -1,7 +1,7 @@
-import prisma from "../../../prisma/prisma";
+import { db } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const result = await prisma.task.delete({
+  const result = await db.task.delete({
     where: {
       id: +req.query.id,
     },
