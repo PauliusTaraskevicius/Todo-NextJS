@@ -50,7 +50,7 @@ export async function getStaticProps(context) {
   });
   const providers = await getProviders(context);
   return {
-    props: { feed: JSON.parse(JSON.stringify(feed)) || null, providers },
+    props: { feed: JSON.parse(JSON.stringify(feed)), providers },
     revalidate: 10,
   };
 }
