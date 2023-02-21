@@ -3,7 +3,7 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import Description from "./description";
 
-function Hero({ credentials }) {
+function Hero({ credentials, providers }) {
   const { data: session, status } = useSession();
 
   return (
@@ -20,9 +20,9 @@ function Hero({ credentials }) {
             everyday tasks to boost your productivity throughout your day.
           </p>
         </div>
-        
+        {status === "unauthenticated" ? (
           <div>
-            {credentials && Object.values(credentials).map((provider) => (
+            {providers && Object.values(providers).map((provider) => (
               <div
                 className="flex justify-center items-center"
                 key={provider.name}
@@ -36,13 +36,13 @@ function Hero({ credentials }) {
               </div>
             ))}
           </div>
-     
-          {/* <div>
+        ) : (
+          <div>
             <Navbar />
             <title>{session.user.name} tasks</title>
             <Description feed={feed} />
-          </div> */}
-     
+          </div>
+        )}
       </div>
       <Footer />
     </div>

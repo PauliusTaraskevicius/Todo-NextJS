@@ -1,5 +1,5 @@
 import React from "react";
-import { getCsrfToken, getProviders } from "next-auth/react";
+import { getProviders } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { db } from "../prisma/prisma";
 
@@ -15,7 +15,7 @@ export default function Home({ providers, csrfToken, feed }) {
       <div>
         {status === "unauthenticated" ? (
           <div className="flex justify-center items-center h-screen">
-            <Hero credentials={providers} />
+            <Hero providers={providers} />
           </div>
         ) : (
           ""
@@ -35,10 +35,33 @@ export default function Home({ providers, csrfToken, feed }) {
   );
 }
 
-export async function getStaticProps(context) {
-  const providers = await getProviders();
-  // const csrfToken = await getCsrfToken(context);
+// export async function getStaticProps(context) {
+//   // const providers = await getProviders();
+//   // const csrfToken = await getCsrfToken(context);
 
+//   const data = await db.task.findMany({
+//     include: { author: true },
+//   });
+
+//   const feed = data.sort(function (a, b) {
+//     if (a.createdAt > b.createdAt) {
+//       return -1;
+//     }
+//     if (a.createdAt < b.createdAt) {
+//       return 1;
+//     }
+//     return 0;
+//   });
+
+//   return {
+//     props: { providers, feed: JSON.parse(JSON.stringify(feed)) },
+//     revalidate: 10,
+//   };
+// }
+
+export async function getServerSideProps() {
+  const providers = await getProviders();
+  
   const data = await db.task.findMany({
     include: { author: true },
   });
@@ -54,7 +77,9 @@ export async function getStaticProps(context) {
   });
 
   return {
-    props: { providers, feed: JSON.parse(JSON.stringify(feed)) },
-    revalidate: 10,
-  };
+      props: {
+          providers,
+          feed: JSON.parse(JSON.stringify(feed))
+      }
+  }
 }
