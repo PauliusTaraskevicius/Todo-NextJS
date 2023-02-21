@@ -23,7 +23,7 @@ export const authOptions = {
       },
     }),
   ],
-  // site: process.env.NEXTAUTH_URL,
+  site: process.env.NEXTAUTH_URL,
 
   session: {
     jwt: true,
