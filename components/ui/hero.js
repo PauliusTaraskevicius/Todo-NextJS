@@ -20,7 +20,7 @@ function Hero({ credentials }) {
             everyday tasks to boost your productivity throughout your day.
           </p>
         </div>
-        {status === "unauthenticated" ? (
+        {/* {status === "unauthenticated" ? (
           <div>
             {Object.values(credentials).map((provider) => (
               <div
@@ -42,7 +42,7 @@ function Hero({ credentials }) {
             <title>{session.user.name} tasks</title>
             <Description feed={feed} />
           </div>
-        )}
+        )} */}
       </div>
       <Footer />
     </div>
