@@ -15,7 +15,7 @@ export default function Home({ providers, csrfToken, feed }) {
       <div>
         {status === "unauthenticated" ? (
           <div className="flex justify-center items-center h-screen">
-            <Hero credentials={providers} token={csrfToken} />
+            <Hero credentials={providers} />
           </div>
         ) : (
           ""
@@ -37,7 +37,7 @@ export default function Home({ providers, csrfToken, feed }) {
 
 export async function getStaticProps(context) {
   const providers = await getProviders();
-  const csrfToken = await getCsrfToken(context);
+  // const csrfToken = await getCsrfToken(context);
 
   const data = await db.task.findMany({
     include: { author: true },
@@ -54,7 +54,7 @@ export async function getStaticProps(context) {
   });
 
   return {
-    props: { providers, csrfToken, feed: JSON.parse(JSON.stringify(feed)) },
+    props: { providers, feed: JSON.parse(JSON.stringify(feed)) },
     revalidate: 10,
   };
 }
