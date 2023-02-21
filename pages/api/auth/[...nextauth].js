@@ -36,7 +36,7 @@ export const authOptions = {
     encryption: true,
   },
 
-  debug: true,
+  // debug: false,
 };
 
 export default NextAuth(authOptions);
