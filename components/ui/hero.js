@@ -29,7 +29,7 @@ function Hero({ providers }) {
               >
                 <button
                   className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 bg-blue-900 transition duration-150 ease-in-out hover:bg-blue-700 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-blue-700 py-2 sm:py-4 text-sm"
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => signIn()}
                 >
                   Login with Email
                 </button>
