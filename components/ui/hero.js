@@ -22,7 +22,7 @@ function Hero({ providers }) {
         </div>
         {status === "unauthenticated" ? (
           <div>
-            {Object.values(providers).map((provider) => (
+            {providers && Object.values(providers).map((provider) => (
               <div
                 className="flex justify-center items-center"
                 key={provider.name}

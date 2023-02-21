@@ -14,13 +14,13 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
+      // authorization: {
+      //   params: {
+      //     prompt: "consent",
+      //     access_type: "offline",
+      //     response_type: "code",
+      //   },
+      // },
     }),
   ],
   site: process.env.NEXTAUTH_URL,
@@ -36,7 +36,6 @@ export const authOptions = {
     encryption: true,
   },
 
-  debug: false,
 };
 
 export default NextAuth(authOptions);
