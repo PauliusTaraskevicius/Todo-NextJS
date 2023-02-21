@@ -3,9 +3,6 @@ import "../styles/globals.css";
 
 import { SessionProvider } from "next-auth/react";
 
-
-import Layout from "../components/Layout/Layout";
-
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -13,9 +10,7 @@ export default function App({
   return (
     <React.Fragment>
       <SessionProvider session={session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </SessionProvider>
     </React.Fragment>
   );

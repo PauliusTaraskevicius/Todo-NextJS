@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
+
+
 let db;
 
 //check if we are running in production mode
