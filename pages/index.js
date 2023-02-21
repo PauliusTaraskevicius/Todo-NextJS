@@ -36,9 +36,8 @@ export default function Home({ providers, csrfToken, feed }) {
 }
 
 export async function getStaticProps(context) {
-  // const providers = await getProviders(context);
-  const providers = await getProviders()
-  const csrfToken = await getCsrfToken(context)
+  const providers = await getProviders();
+  const csrfToken = await getCsrfToken(context);
 
   const data = await db.task.findMany({
     include: { author: true },
