@@ -3,7 +3,7 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import Description from "./description";
 
-function Hero({ credentials, providers }) {
+function Hero({ providers }) {
   const { data: session, status } = useSession();
 
   return (
@@ -22,7 +22,7 @@ function Hero({ credentials, providers }) {
         </div>
         {status === "unauthenticated" ? (
           <div>
-            {providers && Object.values(providers).map((provider) => (
+            {Object.values(providers).map((provider) => (
               <div
                 className="flex justify-center items-center"
                 key={provider.name}
