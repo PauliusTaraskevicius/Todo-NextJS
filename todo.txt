@@ -1,0 +1,3 @@
+- get tasks with getStaticProps
+- add loading to finished/unfinished button and post submit btn
+- every user sees only his tasks
