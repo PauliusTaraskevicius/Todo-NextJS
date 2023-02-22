@@ -10,12 +10,9 @@ function TasksList({ feed }) {
     <div>
       {feed.length > 0 ? (
         feed.map((item, index) => (
-          <div>
+          <div key={index}>
             {session.user.email === item.author.email ? (
-              <div
-                className="flex mb-12 items-center border-b border-gray-200"
-                key={index}
-              >
+              <div className="flex mb-12 items-center border-b border-gray-200">
                 <p
                   className={
                     item.completed
